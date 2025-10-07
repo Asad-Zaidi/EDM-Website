@@ -1,0 +1,181 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 0 0 10px 40px;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 4px 0;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #135bec;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: #135bec;
+    background: none !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.active-link {
+    color: #135bec;
+    font-weight: 600;
+    border-bottom: 2px solid #135bec;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-right: 40px;
+}
+
+.nav-btn {
+    text-decoration: none;
+}
+
+.btn-login,
+.btn-start {
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+
+.btn-login {
+    background-color: #f0f4ff;
+    color: #135bec;
+    border: 1px solid #dbe5ff;
+}
+
+.btn-login:hover {
+    background-color: #e3ecff;
+}
+
+
+.btn-start {
+    background-color: #135bec;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(19, 91, 236, 0.25);
+}
+
+.btn-start:hover {
+    background-color: #0f4bb3;
+    transform: translateY(-1px);
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-icon {
+    font-size: 26px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.menu-icon:hover {
+    color: #135bec;
+}
+
+.mobile-buttons {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+        border-top: 1px solid #eee;
+        display: none;
+    }
+
+    .nav-links.open {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header {
+        padding: 12px 25px;
+    }
+}
+
+/* Slide Animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
