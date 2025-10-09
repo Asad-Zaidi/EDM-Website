@@ -1,0 +1,135 @@
+.services-page {
+    background: #f8faff;
+    padding-bottom: 80px;
+}
+
+.services-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: linear-gradient(135deg, #e9f0ff, #f9fbff);
+}
+
+.services-header h1 {
+    color: #135bec;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.services-header p {
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.category {
+    padding: 60px 80px;
+}
+
+.category h2 {
+    color: #0a0f1c;
+    font-size: 24px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.category h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #135bec;
+    margin-top: 8px;
+    border-radius: 3px;
+}
+
+.service-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.service-card img {
+    padding-top: 30px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: #135bec;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .category {
+        padding: 40px 25px;
+    }
+
+    .services-header h1 {
+        font-size: 30px;
+    }
+
+    .services-header p {
+        font-size: 15px;
+    }
+}
+
+.price {
+    margin-top: auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a0f1c;
+    background: #f0f4ff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.details-btn {
+    margin-top: 12px;
+    background-color: #135bec;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: #003ecc;
+    transform: translateY(-2px);
+}

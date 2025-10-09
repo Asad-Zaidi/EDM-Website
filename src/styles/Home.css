@@ -116,8 +116,6 @@
 /* ===== Services Section ===== */
 .services {
     padding: 60px 100px;
-    background: var(--section-bg);
-    color: var(--text-color);
     text-align: center;
 }
 
@@ -138,9 +136,8 @@
 
 /* Individual Card */
 .card {
-    background: var(--card-bg);
-    color: var(--text-color);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 25px 20px;
     width: 240px;
