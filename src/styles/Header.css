@@ -1,9 +1,10 @@
+/* ====== HEADER / NAVBAR ====== */
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 0 0 10px 40px;
+    padding: 10px 50px;
     border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     position: -webkit-sticky;
@@ -12,12 +13,15 @@
     z-index: 100;
 }
 
+/* ====== LOGO ====== */
 .logo-img {
     height: 45px;
     width: auto;
     object-fit: contain;
+    cursor: pointer;
 }
 
+/* ====== NAV LINKS ====== */
 .nav-links {
     display: flex;
     align-items: center;
@@ -29,47 +33,48 @@
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 4px 0;
-}
-
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: #135bec;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a:focus::after {
-    width: 100%;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-    color: #135bec;
-    background: none !important;
-    outline: none;
-    box-shadow: none;
-}
-
-.active-link {
-    color: #135bec;
-    font-weight: 600;
-    border-bottom: 2px solid #135bec;
-    padding-bottom: 2px;
+    padding: 8px 14px;
+    border-radius: 6px;
     transition: all 0.3s ease;
 }
 
+/* Hover effect (background highlight) */
+.nav-links a:hover {
+    background-color: rgba(19, 91, 236, 0.08);
+    color: #135bec;
+}
+
+/* Active link (persistent background highlight) */
+.nav-links a.active-link {
+    background-color: #135bec;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(19, 91, 236, 0.15);
+}
+
+/* Keep highlight active always, even on click elsewhere */
+.nav-links a.active-link:focus,
+.nav-links a.active-link:active {
+    background-color: #135bec;
+    color: #fff;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(19, 91, 236, 0.15);
+}
+
+/* Remove unwanted focus outlines */
+.nav-links a:focus,
+.nav-links a:active {
+    outline: none;
+    background: none;
+    box-shadow: none;
+}
+
+/* ====== RIGHT BUTTONS ====== */
 .header-right {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding-right: 40px;
 }
 
 .nav-btn {
@@ -86,7 +91,7 @@
     transition: all 0.3s ease;
 }
 
-
+/* Login button */
 .btn-login {
     background-color: #f0f4ff;
     color: #135bec;
@@ -97,7 +102,7 @@
     background-color: #e3ecff;
 }
 
-
+/* Get Started button */
 .btn-start {
     background-color: #135bec;
     color: #fff;
@@ -109,6 +114,7 @@
     transform: translateY(-1px);
 }
 
+/* ====== HAMBURGER MENU ====== */
 .menu-toggle {
     display: none;
     cursor: pointer;
@@ -124,6 +130,7 @@
     color: #135bec;
 }
 
+/* ====== MOBILE MENU ====== */
 .mobile-buttons {
     display: none;
 }
@@ -167,7 +174,7 @@
     }
 }
 
-/* Slide Animation */
+/* ====== SLIDE ANIMATION ====== */
 @keyframes slideDown {
     from {
         opacity: 0;

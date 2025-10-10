@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Services from "./components/Services";
+import ProductDetail from "./components/ProductDetail";
+
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Auth from "./components/Auth";
@@ -18,6 +20,8 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:id" element={<ProductDetail />} />
+
 
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

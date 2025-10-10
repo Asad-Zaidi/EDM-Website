@@ -1,73 +1,3 @@
-// import React, { useState } from "react";
-// import { NavLink } from "react-router-dom";
-// import { FiMenu, FiX } from "react-icons/fi"; // icons from react-icons
-// import "../styles/Header.css";
-// import logo from "../assets/logo.png";
-
-// function Header() {
-//     const [menuOpen, setMenuOpen] = useState(false);
-
-//     const toggleMenu = () => setMenuOpen(!menuOpen);
-//     const closeMenu = () => setMenuOpen(false);
-
-//     return (
-//         <header className="header">
-//             {/* Left: Logo */}
-//             <div className="header-left">
-//                 <NavLink to="/" onClick={closeMenu}>
-//                     <img src={logo} alt="Service Hub Logo" className="logo-img" />
-//                 </NavLink>
-//             </div>
-
-//             {/* Center: Nav Links */}
-//             <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-//                 <NavLink to="/" end onClick={closeMenu}>
-//                     Home
-//                 </NavLink>
-//                 <NavLink to="/services" onClick={closeMenu}>
-//                     Services
-//                 </NavLink>
-//                 <NavLink to="/about" onClick={closeMenu}>
-//                     About
-//                 </NavLink>
-//                 <NavLink to="/contact" onClick={closeMenu}>
-//                     Contact
-//                 </NavLink>
-
-//                 {/* Buttons in mobile menu */}
-//                 <div className="mobile-buttons">
-//                     <NavLink to="/login" onClick={closeMenu}>
-//                         <button className="btn-login">Login</button>
-//                     </NavLink>
-//                     <NavLink to="/register" onClick={closeMenu}>
-//                         <button className="btn-start">Get Started</button>
-//                     </NavLink>
-//                 </div>
-//             </nav>
-
-//             {/* Right: Buttons (Desktop Only) */}
-//             <div className="header-right">
-//                 <NavLink to="/login" className="nav-btn">
-//                     <button className="btn-login">Login</button>
-//                 </NavLink>
-//                 <NavLink to="/register" className="nav-btn">
-//                     <button className="btn-start">Get Started</button>
-//                 </NavLink>
-//             </div>
-
-//             {/* Hamburger Icon */}
-//             <div className="menu-toggle" onClick={toggleMenu}>
-//                 {menuOpen ? (
-//                     <FiX className="menu-icon" />
-//                 ) : (
-//                     <FiMenu className="menu-icon" />
-//                 )}
-//             </div>
-//         </header>
-//     );
-// }
-
-// export default Header;
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -79,7 +9,7 @@ function Header() {
     const menuRef = useRef(null);
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+        setMenuOpen((prev) => !prev);
         document.body.classList.toggle("menu-open");
     };
 
@@ -88,17 +18,25 @@ function Header() {
         document.body.classList.remove("menu-open");
     };
 
-
-    // 🧠 Close menu when clicking outside
+    // Close menu when clicking outside (mobile only)
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setMenuOpen(false);
+                closeMenu();
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    // Prevent body scroll when menu is open
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [menuOpen]);
 
     return (
         <header className="header">
@@ -110,20 +48,34 @@ function Header() {
             </div>
 
             {/* Center: Nav Links */}
-            <nav
-                ref={menuRef}
-                className={`nav-links ${menuOpen ? "open" : ""}`}
-            >
-                <NavLink to="/" end onClick={closeMenu}>
+            <nav ref={menuRef} className={`nav-links ${menuOpen ? "open" : ""}`}>
+                <NavLink
+                    to="/"
+                    end
+                    className={({ isActive }) => (isActive ? "active-link" : "")}
+                    onClick={closeMenu}
+                >
                     Home
                 </NavLink>
-                <NavLink to="/services" onClick={closeMenu}>
+                <NavLink
+                    to="/services"
+                    className={({ isActive }) => (isActive ? "active-link" : "")}
+                    onClick={closeMenu}
+                >
                     Services
                 </NavLink>
-                <NavLink to="/about" onClick={closeMenu}>
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) => (isActive ? "active-link" : "")}
+                    onClick={closeMenu}
+                >
                     About
                 </NavLink>
-                <NavLink to="/contact" onClick={closeMenu}>
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) => (isActive ? "active-link" : "")}
+                    onClick={closeMenu}
+                >
                     Contact
                 </NavLink>
 

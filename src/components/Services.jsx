@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Services.css";
 
+// Import logos
 import netflixLogo from "../assets/netflix.png";
 import primeLogo from "../assets/prime.png";
 import adobeLogo from "../assets/adobe.png";
@@ -12,117 +13,183 @@ import facebookLogo from "../assets/facebook.png";
 import instagramLogo from "../assets/instagram.png";
 import twitterLogo from "../assets/twitter.png";
 
-function Services() {
+const Services = () => {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    const categories = ["All", "Entertainment", "AI Tools", "Education", "Social Media"];
+
+    const services = [
+        // 🎬 Entertainment
+        {
+            id: 1,
+            name: "Netflix",
+            category: "Entertainment",
+            price: "Rs: 1500",
+            img: netflixLogo,
+            desc: "Watch unlimited shows and movies with affordable shared plans.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 2,
+            name: "Amazon Prime Video",
+            category: "Entertainment",
+            price: "Rs: 1200",
+            img: primeLogo,
+            desc: "Enjoy exclusive originals and the latest blockbusters anytime.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 3,
+            name: "Adobe Creative Cloud",
+            category: "Entertainment",
+            price: "Rs: 3500",
+            img: adobeLogo,
+            desc: "Access Photoshop, Illustrator, and more for creative professionals.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        // 🤖 AI Tools
+        {
+            id: 4,
+            name: "ChatGPT Plus",
+            category: "AI Tools",
+            price: "Rs: 4500",
+            img: chatgptLogo,
+            desc: "Get advanced AI assistance for writing, coding, and brainstorming.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 5,
+            name: "Midjourney",
+            category: "AI Tools",
+            price: "Rs: 4000",
+            img: midjourneyLogo,
+            desc: "Create stunning AI-generated images and artwork in minutes.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        // 🎓 Education
+        {
+            id: 6,
+            name: "Coursera",
+            category: "Education",
+            price: "Rs: 2500",
+            img: courseraLogo,
+            desc: "Access world-class online courses from top universities and companies.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 7,
+            name: "Udemy",
+            category: "Education",
+            price: "Rs: 1999",
+            img: udemyLogo,
+            desc: "Learn new skills anytime, anywhere — thousands of affordable courses.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        // 💬 Social Media
+        {
+            id: 8,
+            name: "Facebook Ads",
+            category: "Social Media",
+            price: "Rs: 999",
+            img: facebookLogo,
+            desc: "Grow your business with targeted ad campaigns that convert.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 9,
+            name: "Instagram Tools",
+            category: "Social Media",
+            price: "Rs: 899",
+            img: instagramLogo,
+            desc: "Enhance engagement with advanced analytics and automation.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+        {
+            id: 10,
+            name: "X (Twitter) Tools",
+            category: "Social Media",
+            price: "Rs: 950",
+            img: twitterLogo,
+            desc: "Schedule tweets, track engagement, and grow your online presence.",
+            plans: ["Monthly", "Yearly"],
+            type: ["Private", "Shared"],
+        },
+    ];
+
+    const filteredServices =
+        selectedCategory === "All"
+            ? services
+            : services.filter((s) => s.category === selectedCategory);
+
     return (
         <div className="services-page">
             <header className="services-header">
                 <h1>Our Services</h1>
                 <p>
-                    Explore our wide range of digital subscription categories.
-                    From entertainment and AI tools to education and social media —
-                    Service Hub brings everything together in one place.
+                    Explore our wide range of digital subscriptions — from entertainment and AI tools
+                    to education and social media.
                 </p>
             </header>
 
-            {/* Entertainment Category */}
-            <section className="category">
-                <h2>🎬 Entertainment</h2>
-                <div className="service-grid">
-                    <div className="service-card">
-                        <img src={netflixLogo} alt="Netflix" />
-                        <h3>Netflix</h3>
-                        <p>Watch unlimited shows and movies with affordable shared plans.</p>
-                        <span className="price">$4.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                    <div className="service-card">
-                        <img src={primeLogo} alt="Prime Video" />
-                        <h3>Amazon Prime Video</h3>
-                        <p>Enjoy exclusive originals and the latest blockbusters anytime.</p>
-                        <span className="price">$3.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                    <div className="service-card">
-                        <img src={adobeLogo} alt="Adobe CC" />
-                        <h3>Adobe Creative Cloud</h3>
-                        <p>Access Photoshop, Illustrator, and more for creative professionals.</p>
-                        <span className="price">$7.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                </div>
-            </section>
+            <div className="filter-bar">
+                {categories.map((cat) => (
+                    <button
+                        key={cat}
+                        className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+                        onClick={() => setSelectedCategory(cat)}
+                    >
+                        {cat}
+                    </button>
+                ))}
+            </div>
 
-            {/* AI Tools Category */}
-            <section className="category">
-                <h2>🤖 AI Tools</h2>
-                <div className="service-grid">
-                    <div className="service-card">
-                        <img src={chatgptLogo} alt="ChatGPT" />
-                        <h3>ChatGPT Plus</h3>
-                        <p>Get advanced AI assistance for writing, coding, and brainstorming.</p>
-                        <span className="price">$6.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                    <div className="service-card">
-                        <img src={midjourneyLogo} alt="Midjourney" />
-                        <h3>Midjourney</h3>
-                        <p>Create stunning AI-generated images and artwork in minutes.</p>
-                        <span className="price">$5.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                </div>
-            </section>
+            <div className="service-grid">
+                {filteredServices.map((s) => (
+                    <div key={s.id} className="modern-service-card">
+                        <div className="card-top">
+                            <img src={s.img} alt={s.name} />
+                        </div>
 
-            {/* Education Category */}
-            <section className="category">
-                <h2>🎓 Education</h2>
-                <div className="service-grid">
-                    <div className="service-card">
-                        <img src={courseraLogo} alt="Coursera" />
-                        <h3>Coursera</h3>
-                        <p>Access world-class online courses from top universities and companies.</p>
-                        <span className="price">$2.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                    <div className="service-card">
-                        <img src={udemyLogo} alt="Udemy" />
-                        <h3>Udemy</h3>
-                        <p>Learn new skills anytime, anywhere — thousands of affordable courses.</p>
-                        <span className="price">$1.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                </div>
-            </section>
+                        <div className="card-content">
+                            <div className="card-header">
+                                <h3>{s.name}</h3>
+                                <div className="price-tags">
+                                    <span className="price">{s.price}</span>
+                                    <div className="tag-group">
+                                        {s.plans.map((p, i) => (
+                                            <span key={i} className={`tag ${i === 0 ? "active" : ""}`}>{p}</span>
+                                        ))}
+                                        {s.type.map((t, i) => (
+                                            <span key={i} className={`tag ${i === 0 ? "active" : ""}`}>{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
 
-            {/* Social Media Tools Category */}
-            <section className="category">
-                <h2>💬 Social Media</h2>
-                <div className="service-grid">
-                    <div className="service-card">
-                        <img src={facebookLogo} alt="Facebook Ads" />
-                        <h3>Facebook Ads</h3>
-                        <p>Grow your business with targeted ad campaigns that convert.</p>
-                        <span className="price">$3.49 / month</span>
-                        <button className="details-btn">View Details</button>
+                            <p className="desc">{s.desc}</p>
+
+                            <a href={`/services/${s.id}`} className="more-detail">
+                                More Detail →
+                            </a>
+
+                            <div className="buy-center">
+                                <button className="buy-now">Buy Now</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="service-card">
-                        <img src={instagramLogo} alt="Instagram Tools" />
-                        <h3>Instagram Tools</h3>
-                        <p>Enhance engagement with advanced analytics and automation.</p>
-                        <span className="price">$2.49 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                    <div className="service-card">
-                        <img src={twitterLogo} alt="X (Twitter) Tools" />
-                        <h3>X (Twitter) Tools</h3>
-                        <p>Schedule tweets, track engagement, and grow your online presence.</p>
-                        <span className="price">$2.99 / month</span>
-                        <button className="details-btn">View Details</button>
-                    </div>
-                </div>
-            </section>
+                ))}
+            </div>
         </div>
     );
-}
+};
 
 export default Services;
