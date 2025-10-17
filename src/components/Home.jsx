@@ -38,7 +38,7 @@ function Home() {
 
             {/* Services Section */}
             <section className="services">
-                <h2>Our Services</h2>
+                <h2>Popular Services</h2>
                 <div className="service-cards">
                     <div className="card">
                         <img src={netflixLogo} alt="Netflix" className="service-icon" />
