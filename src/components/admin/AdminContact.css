@@ -1,0 +1,46 @@
+.admin-contact {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-contact h1 {
+  color: #135bec;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-form-admin label {
+  font-weight: 500;
+  margin-top: 12px;
+  display: block;
+  color: #333;
+}
+
+.contact-form-admin input,
+.contact-form-admin textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.contact-form-admin button {
+  margin-top: 20px;
+  background: #135bec;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.contact-form-admin button:hover {
+  background: #0f4bb3;
+}
