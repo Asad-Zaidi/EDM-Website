@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import "../styles/Header.css";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);

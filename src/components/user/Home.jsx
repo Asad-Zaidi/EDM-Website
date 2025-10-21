@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/Home.css";
 
-import logo from "../assets/logo.png";
-import netflixLogo from "../assets/netflix.png";
-import primeLogo from "../assets/prime.png";
-import adobeLogo from "../assets/adobe.png";
-import officeLogo from "../assets/365.png";
+import logo from "../../assets/logo.png";
+import netflixLogo from "../../assets/netflix.png";
+import primeLogo from "../../assets/prime.png";
+import adobeLogo from "../../assets/adobe.png";
+import officeLogo from "../../assets/365.png";
 
 function Home() {
     return (

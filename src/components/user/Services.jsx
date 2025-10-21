@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Services.css";
-import api from "../api/api"; // ✅ Import our axios instance
+import api from "../../api/api"; // ✅ Import our axios instance
 
 const Services = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");

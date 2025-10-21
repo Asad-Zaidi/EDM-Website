@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/About.css";
-import aboutImg from "../assets/logo.png"; // optional image — add if you have one
+import aboutImg from "../../assets/logo.png";
 
 function About() {
   return (
